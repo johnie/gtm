@@ -12,6 +12,7 @@ import (
 )
 
 var (
+	version     bool
 	copyFlag    bool
 	messageFlag string
 )
@@ -27,11 +28,17 @@ func Execute() error {
 }
 
 func init() {
+	rootCmd.Flags().BoolP("version", "v", false, "Print the version")
 	rootCmd.Flags().BoolVarP(&copyFlag, "copy", "c", false, "Only copy the ticket value")
 	rootCmd.Flags().StringVarP(&messageFlag, "message", "m", "", "Commit message")
 }
 
 func run(cmd *cobra.Command, args []string) error {
+	if version {
+		fmt.Println("gtm v1.0.0")
+		return nil
+	}
+
 	if !utils.IsRepo() {
 		return fmt.Errorf("this script can only be run inside a git repository")
 	}

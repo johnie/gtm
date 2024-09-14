@@ -1,0 +1,44 @@
+# Binaries
+    *.exe
+    *.exe~
+    *.dll
+    *.so
+    *.dylib
+    *.test
+    *.out
+
+    # Build directory
+    /build/
+
+    # Output from debugging tools
+    debug/
+
+    # Vendor directory if needed
+    vendor/
+
+    # Go workspace file (in case modules are not used)
+    go.work
+    go.work.sum
+
+    # Executables created by Go tools
+    /go.sum
+
+    # Test binaries
+    *.test
+
+    # IDE and editor files
+    .idea/
+    .vscode/
+    *.swp
+    *.swo
+
+    # Log files
+    *.log
+
+    # Coverage reports
+    *.cover
+    *.cov
+
+    # System files
+    .DS_Store
+    Thumbs.db

@@ -23,6 +23,8 @@ var rootCmd = &cobra.Command{
 	RunE:  run,
 }
 
+var Utils = utils.NewUtils()
+
 func Execute() error {
 	return rootCmd.Execute()
 }
@@ -39,16 +41,16 @@ func run(cmd *cobra.Command, args []string) error {
 		return nil
 	}
 
-	if !utils.IsRepo() {
+	if !Utils.IsRepo() {
 		return fmt.Errorf("this script can only be run inside a git repository")
 	}
 
-	branchName, err := utils.GetCurrentBranch()
+	branchName, err := Utils.GetCurrentBranch()
 	if err != nil {
 		return fmt.Errorf("error getting current branch: %w", err)
 	}
 
-	ticket, err := utils.ExtractTicket(branchName)
+	ticket, err := Utils.ExtractTicket(branchName)
 	if err != nil {
 		ui.PrintPrompt("Enter JIRA ticket (e.g., XXX-000): ")
 		reader := bufio.NewReader(os.Stdin)
@@ -57,7 +59,7 @@ func run(cmd *cobra.Command, args []string) error {
 	}
 
 	if copyFlag {
-		if err := utils.Copy(ticket); err != nil {
+		if err := Utils.Copy(ticket); err != nil {
 			return fmt.Errorf("error copying to clipboard: %w", err)
 		}
 		fmt.Println(ui.PrePrendCheckmark(ui.TicketStyle(ticket)))
@@ -67,7 +69,7 @@ func run(cmd *cobra.Command, args []string) error {
 	commitMessage := getCommitMessage(args, ticket)
 	fullMessage := fmt.Sprintf("%s: %s", ticket, commitMessage)
 
-	if err := utils.Commit(fullMessage); err != nil {
+	if err := Utils.Commit(fullMessage); err != nil {
 		return fmt.Errorf("error running git commit: %w", err)
 	}
 

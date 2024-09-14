@@ -8,7 +8,7 @@ import (
 
 var (
 	errorStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("#FF0000")).Bold(true)
-	promptStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("#00FF00")).Bold(true)
+	promptStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("5")).Bold(true)
 	infoStyle   = lipgloss.NewStyle().Foreground(lipgloss.Color("#0000FF")).Bold(true)
 )
 

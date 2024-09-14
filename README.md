@@ -17,6 +17,28 @@ GTM is a CLI tool that assists with Git commit operations by prepending the curr
 
 All this installation script does is download the `gtm` script, make it an executable, and copy it to your `$PATH (/usr/local/bin)`. For copying to your `$PATH`, it may be required to enter your password. If there is a better way to do this, please send in a pull request.
 
+## Configuration
+
+GTM uses a configuration file named `.gtmconfig` to store settings such as the JIRA base URL. This configuration file is located in your home directory.
+
+### Default Configuration
+
+If a `.gtmconfig` file does not exist, GTM will create a default configuration file with the following content:
+
+```toml
+[core]
+jira_url = "https://jira.example.com/browse/"
+```
+
+### Custom Configuration
+
+You can customize the configuration by editing the `.gtmconfig` file in your home directory. For example, to set your JIRA URL, modify the `jira_url` field:
+
+```toml
+[core]
+jira_url = "https://yourcompany.jira.com/browse/"
+```
+
 ## Usage
 
 ### Basic Usage
@@ -31,6 +53,8 @@ gtm
 
 - `-c, --copy`: Only copy the ticket value to the clipboard.
 - `-m, --message`: Custom commit message.
+- `-u, --url`: Print the JIRA ticket URL.
+- `-v, --version`: Print the GTM version
 
 ### Examples
 

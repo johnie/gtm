@@ -11,10 +11,11 @@ GTM is a CLI tool that assists with Git commit operations by prepending the curr
 
 ## Installation
 
-1. Ensure you have Go installed on your system.
-2. Clone this repository to your local machine: `git clone https://github.com/johnie/gtm.git cd gtm`
-3. Build the executable: `go build -o gtm`
-4. (Optional) Move the gtm executable to a directory in your `PATH` for easier access. `mv gtm /usr/local/bin/`
+```console
+ $ curl -fsSL https://raw.githubusercontent.com/johnie/gtm/main/bin/install.sh | sh
+```
+
+All this installation script does is download the `gtm` script, make it an executable, and copy it to your `$PATH (/usr/local/bin)`. For copying to your `$PATH`, it may be required to enter your password. If there is a better way to do this, please send in a pull request.
 
 ## Usage
 

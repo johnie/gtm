@@ -10,6 +10,7 @@ var (
 	errorStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("#FF0000")).Bold(true)
 	promptStyle = lipgloss.NewStyle().Foreground(lipgloss.Color("5")).Bold(true)
 	infoStyle   = lipgloss.NewStyle().Foreground(lipgloss.Color("#0000FF")).Bold(true)
+	checkStyle  = lipgloss.NewStyle().Foreground(lipgloss.Color("#00FF00")).Bold(true)
 )
 
 func PrintError(message string) {
@@ -25,7 +26,7 @@ func PrintInfo(message string) {
 }
 
 func PrePrendCheckmark(message string) string {
-	return promptStyle.Render("✔") + " " + message
+	return checkStyle.Render("✔") + " " + message
 }
 
 func PrePrendError(message string) string {
@@ -33,9 +34,6 @@ func PrePrendError(message string) string {
 }
 
 func TicketStyle(ticket string) string {
-	return lipgloss.
-		NewStyle().
-		Bold(true).
-		Foreground(lipgloss.Color("5")).
+	return promptStyle.
 		Render(ticket)
 }

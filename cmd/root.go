@@ -105,13 +105,12 @@ func run(cmd *cobra.Command, args []string) error {
 		if jiraURL == "" {
 			return fmt.Errorf("JIRA URL not set in config")
 		}
-		fmt.Println(jiraURL + ticket)
 		if copyFlag {
 			if err := Utils.Copy(jiraURL + ticket); err != nil {
 				return fmt.Errorf("error copying to clipboard: %w", err)
 			}
-			fmt.Println(ui.PrePrendCheckmark(ui.TicketStyle(jiraURL + ticket)))
 		}
+		fmt.Println(ui.PrePrendCheckmark(ui.TicketStyle(jiraURL + ticket)))
 		return nil
 	}
 
